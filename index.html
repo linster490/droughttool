@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>Drought Water Tool</title>
+		<link type="text/css" rel="stylesheet" href="style.css" />
+
+		<script language="JavaScript">
+			function showInput() {
+
+				var crop_amount = document.getElementById('land_amount').value;
+				var water_requirement = null;
+
+				if (crop_amount=='') {
+					alert('You must enter land amount.');
+					return;
+				}
+				if (!isNaN(crop_amount)==false) {
+					alert('Land amount must be a number');
+					return;
+				}
+				document.getElementById('crop_display').style.visibility = 'visible';
+
+				var Table = document.getElementById('crop_display');
+
+				var almond_water = Math.round(parseInt(crop_amount)/2.47*385230/445249*8.107);
+				var almond_cost = almond_water*70;
+				var almond_value = Math.round(parseInt(crop_amount)*2490*1.83);
+				Table.rows[1].cells[1].innerHTML = almond_water.toString();
+				Table.rows[1].cells[2].innerHTML = almond_cost.toString();
+				Table.rows[1].cells[3].innerHTML = almond_value.toString()+"$";
+
+				var grapes_water = Math.round(parseInt(crop_amount)/2.47*132561/268246*8.107);
+				var grapes_cost = grapes_water*70;
+				var grapes_value = Math.round(parseInt(crop_amount)*6.65*798);
+				Table.rows[2].cells[1].innerHTML = grapes_water.toString();
+				Table.rows[2].cells[2].innerHTML = grapes_cost.toString();
+				Table.rows[2].cells[3].innerHTML = grapes_value.toString()+"$";
+
+
+				var alfalfa_water = Math.round(parseInt(crop_amount)/2.47*99308/141768*8.107);
+				var alfalfa_cost = alfalfa_water*70;
+				var alfalfa_value = Math.round(parseInt(crop_amount)*7.2*189);
+				Table.rows[3].cells[1].innerHTML = alfalfa_water.toString();
+				Table.rows[3].cells[2].innerHTML = alfalfa_cost.toString();
+				Table.rows[3].cells[3].innerHTML = alfalfa_value.toString()+"$";
+
+
+				var rice_water = Math.round(parseInt(crop_amount)/2.47*197711/200805*8.107);
+				var rice_cost = rice_water*70;
+				var rice_value = Math.round(parseInt(crop_amount)*8720*18.9/112);
+				Table.rows[4].cells[1].innerHTML = rice_water.toString();
+				Table.rows[4].cells[2].innerHTML = rice_cost.toString();
+				Table.rows[4].cells[3].innerHTML = rice_value.toString()+"$";
+
+				var walnuts_water = Math.round(parseInt(crop_amount)/2.47*130072/161005*8.107);
+				var walnuts_cost = walnuts_water*70;
+				var walnuts_value = Math.round(parseInt(crop_amount)*2.07*1220);
+				Table.rows[5].cells[1].innerHTML = walnuts_water.toString();
+				Table.rows[5].cells[2].innerHTML = walnuts_cost.toString();
+				Table.rows[5].cells[3].innerHTML = walnuts_value.toString()+"$";
+
+				var ww_water = Math.round(parseInt(crop_amount)/2.47*18601/62256 *8.107);
+				var ww_cost = ww_water*70;
+				var ww_value = Math.round(parseInt(crop_amount)*75*6.15);
+				Table.rows[6].cells[1].innerHTML = ww_water.toString();
+				Table.rows[6].cells[2].innerHTML = ww_cost.toString();
+				Table.rows[6].cells[3].innerHTML = ww_value.toString()+"$";
+
+				var cotton_water = Math.round(parseInt(crop_amount)/2.47*71994/107219*8.107);
+				var cotton_cost = cotton_water*70;
+				var cotton_value = Math.round(parseInt(crop_amount)*1645/2000*345);
+				Table.rows[7].cells[1].innerHTML = cotton_water.toString();
+				Table.rows[7].cells[2].innerHTML = cotton_cost.toString();
+				Table.rows[7].cells[3].innerHTML = cotton_value.toString()+"$";
+
+				var pistachios_water =  Math.round(parseInt(crop_amount)/2.47*79774/167678*8.107);
+				var pistachios_cost = pistachios_water*70;
+				var pistachios_value = Math.round(parseInt(crop_amount)*2810*2.75);
+				Table.rows[8].cells[1].innerHTML = pistachios_water.toString();
+				Table.rows[8].cells[2].innerHTML = pistachios_cost.toString();
+				Table.rows[8].cells[3].innerHTML = pistachios_value.toString()+"$";
+
+				var corn_water =  Math.round(parseInt(crop_amount)/2.47*34039/59031*8.107);
+				var corn_cost = corn_water*70;
+				var corn_value = Math.round(parseInt(crop_amount)*187*4.5);
+				Table.rows[9].cells[1].innerHTML = corn_water.toString();
+				Table.rows[9].cells[2].innerHTML = corn_cost.toString();
+				Table.rows[9].cells[3].innerHTML = corn_value.toString()+"$";
+
+				var oranges_water =  Math.round(parseInt(crop_amount)/2.47*10940/18619*8.107);
+				var oranges_cost = oranges_water*70;
+				var oranges_value = Math.round(parseInt(crop_amount)*368*15.59);
+				Table.rows[10].cells[1].innerHTML = oranges_water.toString();
+				Table.rows[10].cells[2].innerHTML = oranges_cost.toString();
+				Table.rows[10].cells[3].innerHTML = oranges_value.toString()+"$";
+
+			}
+		</script>
+		<script type="text/javascript" src="mapdata.js"></script>
+		<script type="text/javascript" src="statemap.js"></script>
+		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+		<script type="text/javascript">
+    simplemaps_statemap.hooks.click_state = function(id){
+			  var sf_bay= ["Napa","Santa Clara","San Francisco","Alameda","Contra Costa","San Mateo","Marin","Solano"];
+			  var north_coast = ["Del Norte","Trinity","Humboldt","Mendocino","Sonoma","Siskiyou"];
+			  var central_coast = ["Monterey","San Luis Obispo","Santa Barbara"];
+				var south_coast = ["Ventura","Los Angeles","Orange"];
+				var sacramento_river = ["Shasta","Modoc","Tehama","Glenn","Butte","Plumas","Yuba","Sutter","Lake","Yolo","Placer","El Dorado","Sierra","Nevada","Colusa"];
+				var san_joaquin_river = ["Merced","Mariposa","Madera","Tuolumne","Calaveras","Amador","San Joaquin","Stanislaus"];
+				var tulare_lake = ["Tulare","Kern","Fresno","Kings"];
+				var north_lahontan = ["Lassen","Alpine"];
+				var south_lahontan = ["Mono","Inyo","San Bernardino"];
+				var colorado_river = ["Riverside","Imperial","San Diego"];
+
+				// north coast
+				if (north_coast.includes(simplemaps_statemap_mapdata.state_specific[id].name)) {
+					google.charts.load('current', {'packages':['corechart']});
+					google.charts.setOnLoadCallback(drawChart);
+					function drawChart() {
+						var data = google.visualization.arrayToDataTable([
+								['Year', 'Water Storage (1000 acre feet)'],
+								['2016',  1669	],
+								['2017',  2617],
+								['2018',  2154],
+								['2019',  2763],
+								['2020', 2088],
+								['2021',1410]
+						]);
+						var options = {
+							title: 'Water Storage for North Coast',
+							curveType: 'function',
+							legend: { position: 'bottom' }
+						};
+						var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+						chart.draw(data, options);
+				  }
+			  }
+				// SF bay
+				if (sf_bay.includes(simplemaps_statemap_mapdata.state_specific[id].name)) {
+					google.charts.load('current', {'packages':['corechart']});
+					google.charts.setOnLoadCallback(drawChart);
+					function drawChart() {
+						var data = google.visualization.arrayToDataTable([
+								['Year', 'Water Storage (1000 acre feet)'],
+								['2016',  503		],
+								['2017',  478],
+								['2018',  469],
+								['2019',  535],
+								['2020', 472],
+								['2021',365]
+						]);
+						var options = {
+							title: 'Water Storage for San Francisco Bay',
+							curveType: 'function',
+							legend: { position: 'bottom' }
+						};
+						var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+						chart.draw(data, options);
+				  }
+			  }
+				// central coast
+				if (central_coast.includes(simplemaps_statemap_mapdata.state_specific[id].name)) {
+					google.charts.load('current', {'packages':['corechart']});
+					google.charts.setOnLoadCallback(drawChart);
+					function drawChart() {
+						var data = google.visualization.arrayToDataTable([
+								['Year', 'Water Storage (1000 acre feet)'],
+								['2016',  185		],
+								['2017',  604],
+								['2018',  347],
+								['2019',  626],
+								['2020', 470],
+								['2021',272]
+						]);
+						var options = {
+							title: 'Water Storage for Central Coast',
+							curveType: 'function',
+							legend: { position: 'bottom' }
+						};
+						var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+						chart.draw(data, options);
+					}
+				}
+				// south Coast
+				if (south_coast.includes(simplemaps_statemap_mapdata.state_specific[id].name)) {
+					google.charts.load('current', {'packages':['corechart']});
+					google.charts.setOnLoadCallback(drawChart);
+					function drawChart() {
+						var data = google.visualization.arrayToDataTable([
+								['Year', 'Water Storage (1000 acre feet)'],
+								['2016',  1139],
+								['2017',  1365],
+								['2018',  1225],
+								['2019',  1484],
+								['2020', 1459],
+								['2021',972]
+						]);
+						var options = {
+							title: 'Water Storage for South Coast',
+							curveType: 'function',
+							legend: { position: 'bottom' }
+						};
+						var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+						chart.draw(data, options);
+					}
+				}
+				//sacra River
+				if (sacramento_river.includes(simplemaps_statemap_mapdata.state_specific[id].name)) {
+					google.charts.load('current', {'packages':['corechart']});
+					google.charts.setOnLoadCallback(drawChart);
+					function drawChart() {
+						var data = google.visualization.arrayToDataTable([
+								['Year', 'Water Storage (1000 acre feet)'],
+								['2016',  13026		],
+								['2017',  13930],
+								['2018',  12586],
+								['2019',  15205],
+								['2020', 11541],
+								['2021',7214]
+						]);
+						var options = {
+							title: 'Water Storage for Sacramento River',
+							curveType: 'function',
+							legend: { position: 'bottom' }
+						};
+						var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+						chart.draw(data, options);
+					}
+				}
+				// san joaquin River
+				if (san_joaquin_river.includes(simplemaps_statemap_mapdata.state_specific[id].name)) {
+					google.charts.load('current', {'packages':['corechart']});
+					google.charts.setOnLoadCallback(drawChart);
+					function drawChart() {
+						var data = google.visualization.arrayToDataTable([
+								['Year', 'Water Storage (1000 acre feet)'],
+								['2016',  6331],
+								['2017',  10570],
+								['2018',  9280],
+								['2019',  10302],
+								['2020', 8349],
+								['2021',5952]
+						]);
+						var options = {
+							title: 'Water Storage for San Joaquin River',
+							curveType: 'function',
+							legend: { position: 'bottom' }
+						};
+						var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+						chart.draw(data, options);
+					}
+				}
+			//tulare lake
+			if (tulare_lake.includes(simplemaps_statemap_mapdata.state_specific[id].name)) {
+				google.charts.load('current', {'packages':['corechart']});
+				google.charts.setOnLoadCallback(drawChart);
+				function drawChart() {
+					var data = google.visualization.arrayToDataTable([
+							['Year', 'Water Storage (1000 acre feet)'],
+							['2016',  1145		],
+							['2017',  1843],
+							['2018',  1296],
+							['2019',  1800],
+							['2020', 1134],
+							['2021',558]
+					]);
+					var options = {
+						title: 'Water Storage for Tulare Lake',
+						curveType: 'function',
+						legend: { position: 'bottom' }
+					};
+					var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+					chart.draw(data, options);
+				}
+			}
+			//north lahontan
+			if (north_lahontan.includes(simplemaps_statemap_mapdata.state_specific[id].name)) {
+				google.charts.load('current', {'packages':['corechart']});
+				google.charts.setOnLoadCallback(drawChart);
+				function drawChart() {
+					var data = google.visualization.arrayToDataTable([
+							['Year', 'Water Storage (1000 acre feet)'],
+							['2016',  292		],
+							['2017',  1048],
+							['2018',  1036],
+							['2019',  1038],
+							['2020', 794],
+							['2021',351]
+					]);
+					var options = {
+						title: 'Water Storage for North Lahontan',
+						curveType: 'function',
+						legend: { position: 'bottom' }
+					};
+					var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+					chart.draw(data, options);
+				}
+			}
+			//south Lahontan
+			if (south_lahontan.includes(simplemaps_statemap_mapdata.state_specific[id].name)) {
+				google.charts.load('current', {'packages':['corechart']});
+				google.charts.setOnLoadCallback(drawChart);
+				function drawChart() {
+					var data = google.visualization.arrayToDataTable([
+							['Year', 'Water Storage (1000 acre feet)'],
+							['2016',  272		],
+							['2017',  296],
+							['2018',  330],
+							['2019',  319],
+							['2020', 309],
+							['2021',248]
+					]);
+					var options = {
+						title: 'Water Storage for South Lahontan',
+						curveType: 'function',
+						legend: { position: 'bottom' }
+					};
+					var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+					chart.draw(data, options);
+				}
+			}
+			if (colorado_river.includes(simplemaps_statemap_mapdata.state_specific[id].name)) {
+				google.charts.load('current', {'packages':['corechart']});
+				google.charts.setOnLoadCallback(drawChart);
+				function drawChart() {
+				  var data = google.visualization.arrayToDataTable([
+				      ['', { role: 'annotation' }],
+				      ['', '']
+				  ]);
+
+				  var ac = new google.visualization.ColumnChart(document.getElementById('curve_chart'));
+				  ac.draw(data, {
+				      title : 'No Data Yet',
+
+				  });
+				}
+			}
+			}
+    </script>
+
+
+	</head>
+
+	<body>
+		<div id="container">
+			<div id = "header">
+				<h1>Drought Water Tool</h1>
+			</div>
+
+			<div id="content">
+				<div id = "map">
+					<!-- <img src= "california-map.png" width="800"> -->
+				</div>
+
+				<div id = "data_form">
+					<span id="data">
+
+						<div id="curve_chart" style="width: 500px; height: 800px"></div>
+
+					</span>
+				</div>
+			</div>
+
+			<div id="calculator"><br><br>
+				<h2>Farm Water Estimator</h2>
+				<form onsubmit="return false">
+
+
+					<label>Enter Land Amount (acres): </label>
+					<input type="text" id="land_amount" name="land_amount" ><br>
+					<input type="submit" onclick="showInput();"><br>
+					<span id='display'></span>
+					<table style="visibility:hidden" id='crop_display' class = "center">
+						<tr>
+							<th>Crop</th>
+							<th>Water Required (acre-feet)</th>
+							<th>Cost of Water</th>
+							<th>Estimated Value</th>
+						</tr>
+
+						<tr>
+							<td>Almonds</td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+
+						<tr>
+							<td>Grapes</td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+
+						<tr>
+							<td>Alfalfa</td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+
+						<tr>
+							<td>Rice</td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+
+						<tr>
+							<td>Walnuts</td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+
+						<tr>
+							<td>Winter Wheat</td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+
+						<tr>
+							<td>Cotton</td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+
+						<tr>
+							<td>Pistachios</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+
+						<tr>
+							<td>Corn</td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+
+						<tr>
+							<td>Oranges</td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</table>
+
+
+
+				</form>
+			</div>
+			<br><br><br><br>
+			<div id = "footer">
+				Copyright &copy; 2021 Linden Wang
+			</div>
+
+		</div>
+
+	</body>
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+		$("document").ready( function () {
+				alert("Click on a county to show local estimated water data.");
+		});
+</script>

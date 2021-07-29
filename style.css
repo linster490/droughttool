@@ -1,0 +1,62 @@
+body {
+  background-color: #48A9A6;
+}
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+.center {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#container {
+	width:1440px;
+	background-color: #F0F0C9;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#header {
+  font-family: 'Arvo', Georgia, Times, serif;
+	color:white;
+	text-align: center;
+	background-color: #124E78;
+  height:80px;
+}
+
+#content {
+	width:1400px;
+	background-color: #F0F0C9;
+	padding:20px;
+}
+
+#map {
+	float: left;
+}
+
+#data_form {
+	float:right;
+	width:500px;
+	height:800px;
+	background-color: white;
+}
+
+#calculator{
+  font-family: 'Arvo', Georgia, Times, serif;
+	text-align: center;
+	clear:both;
+	width:auto;
+	background-color: #F0F0C9;
+}
+
+#footer {
+  font-family: 'Arvo', Georgia, Times, serif;
+	clear:both;
+  color:white;
+	background-color: #124E78;
+  height:40px;
+
+}

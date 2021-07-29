@@ -1,2 +1,2 @@
 # droughttool
-Website allowing farmers to view water data and estimate water usage for certain crops.
+Website allowing Californian farmers to view water data for their county and estimate water usage for certain crops.

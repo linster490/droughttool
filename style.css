@@ -52,6 +52,16 @@ table, th, td {
 	background-color: #F0F0C9;
 }
 
+#instructions1 {
+  font-family: 'Arvo', Georgia, Times, serif;
+  clear:both;
+}
+
+#instructions2 {
+  font-family: 'Arvo', Georgia, Times, serif;
+  clear:both;
+}
+
 #footer {
   font-family: 'Arvo', Georgia, Times, serif;
 	clear:both;

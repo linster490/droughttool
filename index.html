@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<title>Drought Water Tool</title>
+		<title>California Water and Crop Tool</title>
 		<link type="text/css" rel="stylesheet" href="style.css" />
 
 		<script language="JavaScript">
@@ -346,11 +346,13 @@
 	</head>
 
 	<body>
-		<div id="container">
-			<div id = "header">
-				<h1>Drought Water Tool</h1>
-			</div>
 
+		<div id="container">
+
+			<div id = "header">
+				<h1>California Water and Crop Tool</h1>
+			</div>
+			 <p style="font-size:20px;">This website attempts to predict the amount of water available in each Californian hydrologic region, amount of water required to sustain certain crops, and value of certain crops to help farmers select cost effective crops to plant. To use the map feature below, select your county to display water trends for the nearest major water resevoirs.</p>
 			<div id="content">
 				<div id = "map">
 					<!-- <img src= "california-map.png" width="800"> -->
@@ -364,9 +366,11 @@
 					</span>
 				</div>
 			</div>
-
+			<div id="instructions1">
+				<p style="font-size:20px;">To use the crop data tool below, enter an amount of land to see the amount of water different crops need and the estimated value of those crops.</p>
+			</div>
 			<div id="calculator"><br><br>
-				<h2>Farm Water Estimator</h2>
+				<h2>Crop Data Tool</h2>
 				<form onsubmit="return false">
 
 
@@ -458,7 +462,19 @@
 
 				</form>
 			</div>
-			<br><br><br><br>
+			<br><br>
+			<p>Sources</p>
+			<ul>
+				<li><a href="https://www.mdpi.com/2072-4292/11/15/1782">Crop Water Efficiency</a></li>
+				<li><a href="https://www.cdfa.ca.gov/exec/county/CountyCropReports.html">Crop Value Data</a></li>
+				<li><a href="https://cdec.water.ca.gov/reportapp/javareports?name=STORAGEW">Regional Water Data</a></li>
+				<li><a href="https://www.nass.usda.gov/Quick_Stats/Ag_Overview/stateOverview.php?state=CALIFORNIA">General Crop Value Data</a></li>
+				<li><a href="https://www.farmprogress.com/water-70-24-million-acre-foot#:~:text=California%20farmers%20pay%20an%20average%20of%20%2470%20per,the%20value%20of%20that%20acre-foot%20is%20%242.4%20million.">Water Price</a></li>
+
+
+
+			</ul>
+			<br><br>
 			<div id = "footer">
 				Copyright &copy; 2021 Linden Wang
 			</div>
@@ -467,9 +483,3 @@
 
 	</body>
 </html>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script>
-		$("document").ready( function () {
-				alert("Click on a county to show local estimated water data.");
-		});
-</script>
